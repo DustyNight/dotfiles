@@ -1,5 +1,6 @@
 "
-" A (not so) minimal vimrc.
+" A vimrc based on minimal-vimrc from Wang Shidong@wsdjeg and was
+" personalized by dustynight@DN-C. Fell free to give advice! 
 "
 
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
@@ -50,6 +51,16 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
+" If the files doesn't exist, create it. 
+if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files')
+  call mkdir($HOME.'/.vim/files/swap')
+  call mkdir($HOME.'/.vim/files/undo')
+  call mkdir($HOME.'/.vim/files/info')
+  call mkdir($HOME.'/.vim/files/info/viminfo')
+  call mkdir($HOME.'/.vim/files/backup')
+endif
+
 " Put all temporary files under the same directory.
 " https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
 set backup
@@ -66,5 +77,17 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 nnoremap j k
 nnoremap k j
 
-" use <space> instead of : in normal mode
-nnoremap <space> :
+" Use <space> instead of : in normal mode
+nnoremap <Space> :
+
+" Install vim-plug if necessary
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Install plug
+call plug#begin('~/.vim/plugged')
+
+call plug#end()
