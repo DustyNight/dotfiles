@@ -1,6 +1,6 @@
 "
 " A vimrc based on minimal-vimrc from Wang Shidong@wsdjeg and was
-" personalized by dustynight@DN-C. Fell free to give advice! 
+" personalized by dustynight@DN-C. Feel free to give advice! 
 "
 
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
@@ -57,7 +57,6 @@ if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files/swap')
   call mkdir($HOME.'/.vim/files/undo')
   call mkdir($HOME.'/.vim/files/info')
-  call mkdir($HOME.'/.vim/files/info/viminfo')
   call mkdir($HOME.'/.vim/files/backup')
 endif
 

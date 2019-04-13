@@ -1,1 +1,1 @@
-A personal vimrc based on [minimal-vimrc](https://github.com/wsdjeg/vim-galore-zh_cn/blob/master/contents/minimal-vimrc.vim) from Wang Shidong@wsdjeg .
+A personal vimrc based on [minimal-vimrc](https://github.com/wsdjeg/vim-galore-zh_cn/blob/master/contents/minimal-vimrc.vim) from Wang Shidong@wsdjegm, developed by dustynight@DN-C. Feel free to give advice!
