@@ -72,10 +72,6 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
-" Exchange j & k
-nnoremap j k
-nnoremap k j
-
 " Use <space> instead of : in normal mode
 nnoremap <Space> :
 
@@ -88,5 +84,8 @@ endif
 
 " Install plug
 call plug#begin('~/.vim/plugged')
+    " install vim-markdown when editing a md file
+    Plug 'godlygeek/tabular', {'for': 'md'} 
+    Plug 'plasticboy/vim-markdown', {'for': 'md'}
 
 call plug#end()
