@@ -26,6 +26,7 @@ set showcmd                " Show already typed keys when more are expected.
 
 set incsearch              " Highlight while searching with / or ?.
 set hlsearch               " Keep matches highlighted.
+set showmatch              " Highlight the matching parentheses while your consor meet one. 
 
 set ttyfast                " Faster redrawing.
 set lazyredraw             " Only redraw when necessary.
@@ -37,6 +38,14 @@ set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
+
+set mouse       =a         " Enable mouse.
+set encoding    =utf-8     " Use utf-8.
+set t_Co        =256       " Enable 256 colours.
+set relativenumber         " Show the number of lines.
+set noerrorbells           " Disable the error bells.
+set visualbell             " Enable the visual bell.
+set history     =1000      " 1000 historical operation records. 
 
 set list                   " Show non-printable characters.
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -84,7 +93,7 @@ endif
 
 " Install plug
 call plug#begin('~/.vim/plugged')
-    " install vim-markdown when editing a md file
+    " Install vim-markdown, enable when editing a md file
     Plug 'godlygeek/tabular', {'for': 'md'} 
     Plug 'plasticboy/vim-markdown', {'for': 'md'}
 
