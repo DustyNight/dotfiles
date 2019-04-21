@@ -1,7 +1,9 @@
-"
 " A vimrc based on minimal-vimrc from Wang Shidong@wsdjeg and was
 " personalized by dustynight@DN-C. Feel free to give advice! 
-"
+" Reference:
+" http://www.skywind.me/blog/archives/2084 Skywind@skywind3000 
+" http://www.ruanyifeng.com/blog/2018/09/vimrc.html
+" https://github.com/wsdjeg/vim-galore-zh_cn
 
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 " We set it explicitely to make our position clear!
@@ -21,7 +23,7 @@ set hidden                 " Switch between buffers without having to save first
 set laststatus  =2         " Always show statusline.
 set display     =lastline  " Show as much as possible of the last line.
 
-set showmode               " Show current mode in command-line.
+" set showmode               " Show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
 
 set incsearch              " Highlight while searching with / or ?.
@@ -42,7 +44,7 @@ set synmaxcol   =200       " Only highlight the first 200 columns.
 set mouse       =a         " Enable mouse.
 set encoding    =utf-8     " Use utf-8.
 set t_Co        =256       " Enable 256 colours.
-set relativenumber         " Show the number of lines.
+set number         " Show the number of lines.
 set noerrorbells           " Disable the error bells.
 set visualbell             " Enable the visual bell.
 set history     =1000      " 1000 historical operation records. 
@@ -84,6 +86,10 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 " Use <space> instead of : in normal mode
 nnoremap <Space> :
 
+
+" All about plugin under this line.
+
+
 " Install vim-plug if necessary
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -93,8 +99,116 @@ endif
 
 " Install plug
 call plug#begin('~/.vim/plugged')
+
     " Install vim-markdown, enable when editing a md file
     Plug 'godlygeek/tabular', {'for': 'md'} 
     Plug 'plasticboy/vim-markdown', {'for': 'md'}
 
+    " Intsall vim-gutentags
+    Plug 'ludovicchabant/vim-gutentags'
+
+    " Install asyncrun
+    Plug 'skywind3000/asyncrun.vim'
+
+    " Install ALE
+    Plug 'w0rp/ale'
+
+    " Install vim-cpp-enhanced-hignlight
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    
+    " Install YouCompleteMe
+    Plug 'Valloric/YouCompleteMe'
+
+    " Install LeaderF
+    Plug 'Yggdroot/LeaderF'
+
+    " Install echodoc
+    Plug 'Shougo/echodoc.vim'
+
+    " Install lightline
+    Plug 'itchyny/lightline.vim'
+
 call plug#end()
+
+" Universal-ctags setting
+set tags=.//tags;,.tags
+
+" Vim-gutentags setting
+" From @skywind3000
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+ 
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+ 
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+ 
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" asyncrun setting
+" From @skywind3000
+" 自动打开 quickfix window ，高度为 6
+let g:asyncrun_open = 6
+ 
+" 任务结束时候响铃提醒
+let g:asyncrun_bell = 1
+ 
+" 设置 F10 打开/关闭 Quickfix 窗口
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+
+" 定义 F9 为编译单文件
+nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+" F5运行
+nnoremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+" 重新定义项目标志
+let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
+" F7 编译整个项目
+nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
+" F8 运行当前项目
+nnoremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
+" F6 执行测试
+nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
+" F4 为更新 Makefile 文件(cmake)
+nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
+
+" ALE setting
+" From @skywind3000
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+ 
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+" YCM setting
+" From @skywind3000
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion = '<c-z>'
+set completeopt=menu,menuone
+ 
+noremap <c-z> <NOP>
+ 
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ }
+
+" echodoc setting
+set noshowmode
