@@ -83,12 +83,27 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
-" Use <space> instead of : in normal mode
-nnoremap <Space> :
+" Key mapping
+" Use <Space> as leader key.
+let mapleader = " "
 
+" Use <Ctrl> + c/v to copy and paste in.
+xnoremap <leader><C-c> "+y
+nnoremap <leader><C-v> "+p
+
+" Use <Space>nh to set no highlight
+nnoremap <leader>nh :nohl<CR>
+
+" Use Ctrl + h/j/k/l to control the cursor in Insert Mode
+inoremap <c-h> <left>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
+
+" use <leader>w to save
+nnoremap <leader>w :w<CR>
 
 " All about plugin under this line.
-
 
 " Install vim-plug if necessary
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -117,6 +132,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'octol/vim-cpp-enhanced-highlight'
     
     " Install YouCompleteMe
+    " WARNING:To install YCM completely, there are some addtional settings you need to do, see https://github.com/Valloric/YouCompleteMe
     Plug 'Valloric/YouCompleteMe'
 
     " Install LeaderF
@@ -127,6 +143,15 @@ call plug#begin('~/.vim/plugged')
 
     " Install lightline
     Plug 'itchyny/lightline.vim'
+
+    " Install vim-hardtime
+    Plug 'takac/vim-hardtime'
+
+    " Install delimitMate
+    Plug 'Raimondi/delimitMate'
+
+    " Install NERD commenter
+    Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
@@ -162,7 +187,7 @@ let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 " 定义 F9 为编译单文件
-nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+nnoremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 " F5运行
 nnoremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 " 重新定义项目标志
@@ -192,8 +217,12 @@ let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
+" LeadrF setting
+noremap <leader>lff :LeaderfFunction!<CR>
+
 " YCM setting
-" From @skywind3000
+" Originally from @skywind3000, personalized by dustynight@DN-C
+let g:ycm_confirm_extra_conf=0    
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
@@ -210,5 +239,37 @@ let g:ycm_semantic_triggers =  {
             \ 'cs,lua,javascript': ['re!\w{2}'],
             \ }
 
+let g:ycm_filetype_whitelist = { 
+\ "c":1,
+\ "cpp":1, 
+\ "objc":1,
+\ "sh":1,
+\ "zsh":1,
+\ "zimbu":1,
+\}
+
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+
 " echodoc setting
 set noshowmode
+
+" nercommenter settings
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" vim-hardtime settting
+" Run in every buffer
+let g:hardtime_default_on = 1
+
+" Ignore Quickfix
+let g:hardtime_ignore_quickfix = 1
+
+" To make hardtime allow a key if it is different from the previous key
+let g:hardtime_allow_different_key = 1
+
+" Set the maximum number of repetative key preses
+let g:hardtime_maxcount = 3
