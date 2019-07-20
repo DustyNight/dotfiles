@@ -49,6 +49,13 @@ set noerrorbells           " Disable the error bells.
 set visualbell             " Enable the visual bell.
 set history     =1000      " 1000 historical operation records. 
 
+" ban imd when in normal mode
+set noimdisable
+
+" set foldmethod
+set foldenable
+set fdm=indent
+
 set list                   " Show non-printable characters.
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
@@ -88,7 +95,7 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 let mapleader = " "
 
 " Use <Ctrl> + c/v to copy and paste in.
-xnoremap <leader><C-c> "+y
+vnoremap <leader><S-c> "+y
 nnoremap <leader><C-v> "+p
 
 " Use <Space>nh to set no highlight
@@ -102,6 +109,7 @@ inoremap <c-l> <right>
 
 " use <leader>w to save
 nnoremap <leader>w :w<CR>
+
 
 " All about plugin under this line.
 
@@ -160,6 +168,7 @@ set tags=.//tags;,.tags
 
 " Vim-gutentags setting
 " From @skywind3000
+" Personalized by @DN-C
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
  
@@ -182,9 +191,12 @@ let g:asyncrun_open = 6
  
 " 任务结束时候响铃提醒
 let g:asyncrun_bell = 1
- 
+
+" Set F11 as forcing to stop AsyncRun by signal KILL
+nnoremap <silent><F11> :AsyncStop!<cr>
+
 " 设置 F10 打开/关闭 Quickfix 窗口
-nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
 
 " 定义 F9 为编译单文件
 nnoremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
@@ -254,7 +266,7 @@ highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 " echodoc setting
 set noshowmode
 
-" nercommenter settings
+" nerdcommenter settings
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
