@@ -292,6 +292,9 @@ let g:NERDCommentEmptyLines = 1
 " Run in every buffer
 let g:hardtime_default_on = 1
 
+" Ignore NERDTree
+let g:hardtime_ignore_buffer_patterns = ["NERD.*"]
+
 " Ignore Quickfix
 let g:hardtime_ignore_quickfix = 1
 
