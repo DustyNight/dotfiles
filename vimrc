@@ -111,7 +111,9 @@ inoremap <c-l> <right>
 nnoremap <leader>w :w<CR>
 
 
+" -------------------------------------------------------------------------------
 " All about plugin under this line.
+" -------------------------------------------------------------------------------
 
 " Install vim-plug if necessary
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -169,8 +171,13 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+" -------------------------------------------------------------------------------
+
 " Universal-ctags setting
+
 set tags=.//tags;,.tags
+
+" -------------------------------------------------------------------------------
 
 " Vim-gutentags setting
 " From @skywind3000
@@ -190,8 +197,11 @@ let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
+" -------------------------------------------------------------------------------
+
 " asyncrun setting
 " From @skywind3000
+
 " 自动打开 quickfix window ，高度为 6
 let g:asyncrun_open = 6
  
@@ -219,7 +229,10 @@ nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
 " F4 为更新 Makefile 文件(cmake)
 nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
 
+" -------------------------------------------------------------------------------
+
 " ALE setting
+
 " From @skywind3000
 let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
@@ -242,10 +255,15 @@ let g:ale_linters = {
 \   'java'   : ['javac'],
 \}
 
+" -------------------------------------------------------------------------------
+
 " LeadrF setting
 noremap <leader>lff :LeaderfFunction!<CR>
 
+" -------------------------------------------------------------------------------
+
 " YCM setting
+
 " Originally from @skywind3000, personalized by dustynight@DN-C
 let g:ycm_confirm_extra_conf=0    
 let g:ycm_add_preview_to_completeopt = 0
@@ -278,8 +296,12 @@ let g:ycm_filetype_whitelist = {
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 
+" -------------------------------------------------------------------------------
+
 " echodoc setting
 set noshowmode
+
+" -------------------------------------------------------------------------------
 
 " nerdcommenter settings
 " Add spaces after comment delimiters by default
@@ -304,16 +326,25 @@ let g:hardtime_allow_different_key = 1
 " Set the maximum number of repetative key preses
 let g:hardtime_maxcount = 3
 
+" -------------------------------------------------------------------------------
+
 " nerdTree settings
+
 "F2开启和关闭树" 
 map <F2> :NERDTreeToggle<CR> 
+
 let NERDTreeChDirMode=1
 "显示书签"
+
 let NERDTreeShowBookmarks=1
 " 设置忽略文件类型" 
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$'] 
+
 "窗口大小"
-let NERDTreeWinSize=25
+let NERDTreeWinSize=40
+
+"Close nerdTree tab automatically when it is the only last tab
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     
 
     
