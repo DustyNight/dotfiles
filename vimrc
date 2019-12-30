@@ -332,16 +332,16 @@ let g:hardtime_maxcount = 3
 
 "F2开启和关闭树" 
 map <F2> :NERDTreeToggle<CR> 
-
 let NERDTreeChDirMode=1
-"显示书签"
 
+"显示书签"
 let NERDTreeShowBookmarks=1
+
 " 设置忽略文件类型" 
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$'] 
 
 "窗口大小"
-let NERDTreeWinSize=40
+let NERDTreeWinSize=30
 
 "Close nerdTree tab automatically when it is the only last tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
