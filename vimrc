@@ -233,7 +233,7 @@ nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
 
 " ALE setting
 
-" From @skywind3000
+" From @skywind3000, personnalized by dustynight@DN-C
 let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -253,6 +253,9 @@ let g:ale_linters = {
 \   'cpp'    : ['gcc', 'clang'],
 \   'c'      : ['gcc', 'clang'],
 \   'java'   : ['javac'],
+\   'javascript'    : ['prettier', 'eslint'],
+\   'HTML'   : ['prettier'],
+\   'CSS'    : ['prittier'],
 \}
 
 " -------------------------------------------------------------------------------
@@ -280,6 +283,8 @@ noremap <c-z> <NOP>
 let g:ycm_semantic_triggers =  {
             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
             \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ 'css': [ 're!^', 're!^\s+', ': '],
+            \ 'html': [ 're!^', 're!^\s+', ': '],
             \ }
 
 let g:ycm_filetype_whitelist = { 
@@ -291,6 +296,9 @@ let g:ycm_filetype_whitelist = {
 \ "zsh":1,
 \ "zimbu":1,
 \ "java":1,
+\ "js":1,
+\ "css":1,
+\ "html":1,
 \}
 
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
