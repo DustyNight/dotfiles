@@ -125,10 +125,6 @@ endif
 " Install plug
 call plug#begin('~/.vim/plugged')
 
-    " Install vim-markdown, enable when editing a md file
-    Plug 'godlygeek/tabular', {'for': 'md'} 
-    Plug 'plasticboy/vim-markdown', {'for': 'md'}
-
     " Install universal-ctags
     Plug 'universal-ctags/ctags'
 
@@ -317,22 +313,6 @@ let g:NERDSpaceDelims = 1
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
-
-" vim-hardtime settting
-" Run in every buffer
-let g:hardtime_default_on = 1
-
-" Ignore NERDTree
-let g:hardtime_ignore_buffer_patterns = ["NERD.*"]
-
-" Ignore Quickfix
-let g:hardtime_ignore_quickfix = 1
-
-" To make hardtime allow a key if it is different from the previous key
-let g:hardtime_allow_different_key = 1
-
-" Set the maximum number of repetative key preses
-let g:hardtime_maxcount = 3
 
 " -------------------------------------------------------------------------------
 
