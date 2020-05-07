@@ -156,9 +156,6 @@ call plug#begin('~/.vim/plugged')
     " Install lightline
     Plug 'itchyny/lightline.vim'
 
-    " Install vim-hardtime
-    Plug 'takac/vim-hardtime'
-
     " Install delimitMate
     Plug 'Raimondi/delimitMate'
 
