@@ -1,6 +1,6 @@
 " A vimrc based on minimal-vimrc from Wang Shidong@wsdjeg and was
 " personalized by dustynight@DN-C. Feel free to give advice! 
-" Reference:
+" References:
 " http://www.skywind.me/blog/archives/2084 Skywind@skywind3000 
 " http://www.ruanyifeng.com/blog/2018/09/vimrc.html
 " https://github.com/wsdjeg/vim-galore-zh_cn
