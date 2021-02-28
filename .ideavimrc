@@ -1,0 +1,10 @@
+" Refferences: https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
+
+set clipboard+=unnamed, unnamedplus
+
+let mapleader = " "
+
+nmap <leader>w :action SaveAll<cr>
+vmap <leader>c :action CommentBylineComment<cr>
+nmap nl o<Esc>k
+nmap == :action ReformatCode<cr>

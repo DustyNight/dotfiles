@@ -28,5 +28,11 @@ Set up the proxy for github.
 
 
 
+## ideavimrc
+
+Simulate some frequently-used commands from vim. 
+
+
+
 
 
