@@ -134,14 +134,8 @@ call plug#begin('~/.vim/plugged')
     " Intsall vim-gutentags
     Plug 'ludovicchabant/vim-gutentags'
 
-    " Install asyncrun
-    Plug 'skywind3000/asyncrun.vim'
-
     " Install ALE
     Plug 'w0rp/ale'
-
-    " Install vim-cpp-enhanced-hignlight
-    Plug 'octol/vim-cpp-enhanced-highlight'
     
     " Install YouCompleteMe
     " WARNING:To install YCM completely, there are some addtional settings you need to do, see https://github.com/Valloric/YouCompleteMe
@@ -189,38 +183,6 @@ let g:gutentags_cache_dir = s:vim_tags
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-" -------------------------------------------------------------------------------
-
-" asyncrun setting
-" From @skywind3000
-
-" 自动打开 quickfix window ，高度为 6
-let g:asyncrun_open = 6
- 
-" 任务结束时候响铃提醒
-let g:asyncrun_bell = 1
-
-" Set F11 as forcing to stop AsyncRun by signal KILL
-nnoremap <silent><F11> :AsyncStop!<cr>
-
-" 设置 F10 打开/关闭 Quickfix 窗口
-nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
-
-" 定义 F9 为编译单文件
-nnoremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-" F5运行
-nnoremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-" 重新定义项目标志
-let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
-" F7 编译整个项目
-nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
-" F8 运行当前项目
-nnoremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
-" F6 执行测试
-nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
-" F4 为更新 Makefile 文件(cmake)
-nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
 
 " -------------------------------------------------------------------------------
 
