@@ -10,3 +10,5 @@ nmap nl o<Esc>k
 nmap == :action ReformatCode<cr>
 nmap gd :action GotoDeclaration<cr>
 nmap gi :action GotoImplementation<cr>
+nmap gf :action Forward<cr>
+nmap gb :action Back<cr>
