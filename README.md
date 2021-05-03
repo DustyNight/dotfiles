@@ -34,5 +34,6 @@ Simulate some frequently-used commands from vim.
 
 
 
+## settings.json
 
-
+VSCode settings. 

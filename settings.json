@@ -1,0 +1,136 @@
+{
+    "files.autoSave": "afterDelay",
+    "http.proxy": "http://127.0.0.1:8899",
+    "editor.suggestSelection": "first",
+    "editor.fontFamily": "DejaVuSansMono NF",
+    "terminal.integrated.fontFamily": "DejaVuSansMono NF",
+    "settingsSync.ignoredExtensions": [],
+    "editor.fontSize": 16,
+    "workbench.colorTheme": "Monokai Dimmed",
+
+    // Vetur Config
+    "vetur.experimental.templateInterpolationService": true,
+
+    //VSCode Vim Config
+    "vim.useSystemClipboard": true,
+    "vim.leader": " ",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save",
+            ],
+        },
+        {
+            "before": [
+                ";"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "=",
+                "="
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "n",
+                "l"
+            ],
+            "after": [
+                "o",
+                "<ESC>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.goToDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "b"
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": [
+                "=",
+                "="
+            ],
+            "commands": [
+                "editor.action.formatSelection"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "editor.action.blockComment"
+            ]
+        }
+    ]
+}

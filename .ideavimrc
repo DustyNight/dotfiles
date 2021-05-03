@@ -5,9 +5,11 @@ set clipboard+=unnamed, unnamedplus
 let mapleader = " "
 
 nmap <leader>w :action SaveAll<cr>
-vmap <leader>c :action CommentBylineComment<cr>
+vmap <leader>c :action CommentByLineComment<cr>
+nmap <leader>c :action CommentByLineComment<cr>
 nmap nl o<Esc>
 nmap == :action ReformatCode<cr>
+nmap -= :action OptimizeImports<cr>
 nmap gd :action GotoDeclaration<cr>
 nmap gi :action GotoImplementation<cr>
 nmap gf :action Forward<cr>
