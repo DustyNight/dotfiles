@@ -15,3 +15,5 @@ nmap gi :action GotoImplementation<cr>
 nmap gf :action Forward<cr>
 nmap gb :action Back<cr>
 nmap <leader>s :action GotoFile<cr>
+nmap <leader>f :action FindInPath<cr>
+vmap <leader>u :action FindUsages<cr>
