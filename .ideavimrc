@@ -17,3 +17,6 @@ nmap gb :action Back<cr>
 nmap <leader>s :action GotoFile<cr>
 nmap <leader>f :action FindInPath<cr>
 vmap <leader>u :action FindUsages<cr>
+nmap <leader>u :action FindUsages<cr>
+vmap <leader>i :action FindUsagesInFile<cr>
+nmap <leader>i :action FindUsagesInFile<cr>
