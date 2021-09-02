@@ -1,22 +1,42 @@
-" Refferences: https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
+" References: https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
 
-set clipboard+=unnamed, unnamedplus
+" Link system clipboard
+set clipboard+=unnamed,unnamedplus
 
+" Set up <Space> leader key
 let mapleader = " "
 
+" Save
 nmap <leader>w :action SaveAll<cr>
+
+" Comment
 vmap <leader>c :action CommentByLineComment<cr>
 nmap <leader>c :action CommentByLineComment<cr>
+
+" Easy new line
 nmap nl o<Esc>
+
+" Easy format
 nmap == :action ReformatCode<cr>
+vmap == :action ReformatCode<cr>
 nmap -= :action OptimizeImports<cr>
+
+" Easy navigate
 nmap gd :action GotoDeclaration<cr>
 nmap gi :action GotoImplementation<cr>
 nmap gf :action Forward<cr>
 nmap gb :action Back<cr>
+
+" Easy search
 nmap <leader>s :action GotoFile<cr>
 nmap <leader>f :action FindInPath<cr>
 vmap <leader>u :action FindUsages<cr>
 nmap <leader>u :action FindUsages<cr>
 vmap <leader>i :action FindUsagesInFile<cr>
 nmap <leader>i :action FindUsagesInFile<cr>
+
+" Easy movement when typing
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
