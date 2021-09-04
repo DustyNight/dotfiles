@@ -126,6 +126,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
     " Install universal-ctags
+    " Note: need manul setup to finish install
     Plug 'universal-ctags/ctags'
 
     " Install nerdtree
