@@ -22,10 +22,11 @@ vmap == :action ReformatCode<cr>
 nmap -= :action OptimizeImports<cr>
 
 " Easy navigate
-nmap gd :action GotoDeclaration<cr>
-nmap gi :action GotoImplementation<cr>
-nmap gf :action Forward<cr>
-nmap gb :action Back<cr>
+nmap <leader>gd :action GotoDeclaration<cr>
+nmap <leader>gi :action GotoImplementation<cr>
+nmap <leader>gf :action Forward<cr>
+nmap <leader>gb :action Back<cr>
+nmap <leader>gt :action GotoTest<cr>
 
 " Easy search
 nmap <leader>s :action GotoFile<cr>
@@ -36,7 +37,7 @@ vmap <leader>i :action FindUsagesInFile<cr>
 nmap <leader>i :action FindUsagesInFile<cr>
 
 " Easy movement when typing
-inoremap <c-h> <left>
-inoremap <c-l> <right>
-inoremap <c-j> <down>
-inoremap <c-k> <up>
+" inoremap <c-h> <left>
+" inoremap <c-l> <right>
+" inoremap <c-j> <down>
+" inoremap <c-k> <up>
