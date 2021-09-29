@@ -1,5 +1,12 @@
 " References: https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
 
+" Set up emulated plugin
+set NERDTree
+set easymotion
+set multiple-cursors
+set argtextobj
+set surround
+
 " Link system clipboard
 set clipboard+=unnamed,unnamedplus
 
@@ -22,11 +29,13 @@ vmap == :action ReformatCode<cr>
 nmap -= :action OptimizeImports<cr>
 
 " Easy navigate
-nmap <leader>gd :action GotoDeclaration<cr>
-nmap <leader>gi :action GotoImplementation<cr>
-nmap <leader>gf :action Forward<cr>
-nmap <leader>gb :action Back<cr>
-nmap <leader>gt :action GotoTest<cr>
+
+" nmap gd :action GotoDeclaration<cr>
+" gd is default setting of ideavim
+nmap gi :action GotoImplementation<cr>
+nmap <c + i> <Action>(Forward)
+nmap <c + o> <Action>(Back)
+nmap gt :action GotoTest<cr>
 
 " Easy search
 nmap <leader>s :action GotoFile<cr>
@@ -36,8 +45,8 @@ nmap <leader>u :action FindUsages<cr>
 vmap <leader>i :action FindUsagesInFile<cr>
 nmap <leader>i :action FindUsagesInFile<cr>
 
-" Easy movement when typing
-" inoremap <c-h> <left>
-" inoremap <c-l> <right>
-" inoremap <c-j> <down>
-" inoremap <c-k> <up>
+" Easy terminal
+nmap <leader>te :action ActivateTerminalToolWindow<cr>
+
+" NERDTree
+nmap <leader>tr :NERDTree<CR>
