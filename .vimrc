@@ -69,7 +69,7 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
-" If the files doesn't exist, create it. 
+" If folders don't exist, create it. 
 if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files')
   call mkdir($HOME.'/.vim/files/swap')
@@ -94,18 +94,8 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 " Use <Space> as leader key.
 let mapleader = " "
 
-" Use <Ctrl> + c/v to copy and paste in.
-vnoremap <leader><S-c> "+y
-nnoremap <leader><C-v> "+p
-
 " Use <Space>nh to set no highlight
 nnoremap <leader>nh :nohl<CR>
-
-" Use Ctrl + h/j/k/l to control the cursor in Insert Mode
-inoremap <c-h> <left>
-inoremap <c-j> <down>
-inoremap <c-k> <up>
-inoremap <c-l> <right>
 
 " use <leader>w to save
 nnoremap <leader>w :w<CR>
