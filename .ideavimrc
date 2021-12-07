@@ -28,8 +28,6 @@ nmap == :action ReformatCode<cr>
 vmap == :action ReformatCode<cr>
 nmap -= :action OptimizeImports<cr>
 
-" Easy navigate
-
 " nmap gd :action GotoDeclaration<cr>
 " gd is default setting of ideavim
 nmap gi :action GotoImplementation<cr>
@@ -44,6 +42,14 @@ vmap <leader>u :action FindUsages<cr>
 nmap <leader>u :action FindUsages<cr>
 vmap <leader>i :action FindUsagesInFile<cr>
 nmap <leader>i :action FindUsagesInFile<cr>
+
+" Easy introducing variable
+nmap <leader>nv :action IntroduceVariable<cr>
+
+" Quick Jump to exact line
+nmap <leader>jl :action GotoLine<cr>
+
+" -----Plugin-----
 
 " Easy terminal
 nmap <leader>te :action ActivateTerminalToolWindow<cr>
