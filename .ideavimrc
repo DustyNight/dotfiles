@@ -10,6 +10,9 @@ set surround
 " Link system clipboard
 set clipboard+=unnamed,unnamedplus
 
+" Case-insensitive search
+set ignorecase
+
 " Set up <Space> leader key
 let mapleader = " "
 
@@ -31,23 +34,23 @@ nmap -= :action OptimizeImports<cr>
 " nmap gd :action GotoDeclaration<cr>
 " gd is default setting of ideavim
 nmap gi :action GotoImplementation<cr>
-nmap <c + i> <Action>(Forward)
-nmap <c + o> <Action>(Back)
+nmap <c - i> <Action>(Forward)
+nmap <c - o> <Action>(Back)
 nmap gt :action GotoTest<cr>
 
 " Easy search
-nmap <leader>s :action GotoFile<cr>
-nmap <leader>f :action FindInPath<cr>
-vmap <leader>u :action FindUsages<cr>
-nmap <leader>u :action FindUsages<cr>
-vmap <leader>i :action FindUsagesInFile<cr>
-nmap <leader>i :action FindUsagesInFile<cr>
+nmap <leader>sa :action GotoFile<cr>
+nmap <leader>fa :action FindInPath<cr>
+vmap <leader>fu :action FindUsages<cr>
+nmap <leader>fu :action FindUsages<cr>
+vmap <leader>fi :action FindUsagesInFile<cr>
+nmap <leader>fi :action FindUsagesInFile<cr>
 
 " Easy introducing variable
 nmap <leader>nv :action IntroduceVariable<cr>
 
-" Quick Jump to exact line
-nmap <leader>jl :action GotoLine<cr>
+" Tab control
+nmap <leader>cot :action CloseAllEditorsButActive<cr>
 
 " -----Plugin-----
 
@@ -56,3 +59,12 @@ nmap <leader>te :action ActivateTerminalToolWindow<cr>
 
 " NERDTree
 nmap <leader>tr :NERDTree<CR>
+
+" Easymotion
+" Jump forward
+nmap <leader>j <Plug>(easymotion-f)
+" Jump backward
+nmap <leader>J <Plug>(easymotion-F)
+
+" Auto-switch IM input when in normal Mode"
+set keep-english-in-normal-and-restore-in-insert
