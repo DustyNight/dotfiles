@@ -19,6 +19,9 @@ let mapleader = " "
 " Save
 nmap <leader>w :action SaveAll<cr>
 
+" Quit
+nmap <leader>q :exit<cr>
+
 " Comment
 vmap <leader>c :action CommentByLineComment<cr>
 nmap <leader>c :action CommentByLineComment<cr>
@@ -51,6 +54,15 @@ nmap <leader>nv :action IntroduceVariable<cr>
 
 " Tab control
 nmap <leader>cot :action CloseAllEditorsButActive<cr>
+
+" Run
+nmap <leader>r :action RunAnything<cr>
+
+" Distraction Free
+nmap <leader>md :action ToggleDistractionFreeMode<cr>
+
+" Presentation
+nmap <leader>mp :action TogglePresentationMode<cr>
 
 " -----Plugin-----
 
