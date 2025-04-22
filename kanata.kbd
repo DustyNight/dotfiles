@@ -1,0 +1,109 @@
+;; Personal kanata config, curated from personal long-time optimized VIA config in my multile QMK firmware keyboard, for my MacBook. 
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn lctl lalt  lmet          spc            rmet ralt       up
+                                                    lft  down  rght 
+)
+
+(deflayer base
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  esc  q    w    e    r    t    y    u    i    o    p    bspc    bspc  @cl 
+  @tc a    s    d    f    g    h    j    k    l    ent    ent    ent
+  lsft z    x    c    v    b    n    m   XX  XX    rsft    rsft
+  @mfn lctl lalt  @sftns          @spc            @fu @sftfu       up
+                                                    lft  down  rght 
+)
+
+(deflayer numbersymbol
+  _   _   _   _   _   _   _   _   _   _   _   _   _
+  _  _    _    _    _    _    _    _    _    _    _    _    _    _
+  grv  1    2    3    4    5    6    7    8    9    0    _    _   _ 
+  _    -    =    [     ]     \    lft    down    up    right    ent    _   _ 
+  caps  _    _    _    _    _    ;    '    ,    .    /    rsft
+  _ _     _      _          _            _     _           _
+                                                    _    _    _ 
+)
+
+(deflayer function
+  _   _   _   _   _   _   _   _   _   _   _   _   _
+  _  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10   f11    _   _ 
+  _    _    _    home     pgup     ins    lft    down    up    right    f12    _   _ 
+  _    _    _    end    pgdn    del    _    _    _    _    _    _
+  _ _     _      _          @sls           _     _           _
+                                                    _    _    _ 
+)
+
+(deflayermap (configlayer)
+  l lrld
+  _ _
+)
+
+(deflayermap (macfn)
+  _ _
+  f1 🔅 
+  f2 🔆
+  f3 @mc
+  f4 @sls
+  f5 @dtn
+  f6 @dnd
+  f7 ◀◀
+  f8 ▶⏸
+  f9 ▶▶
+  f10 🔇 
+  f11 🔉 
+  f12 🔊
+)
+
+                             
+(defvar
+  tap-timeout   100
+  hold-timeout  200
+  tt $tap-timeout
+  ht $hold-timeout
+)
+
+(defalias
+  ;; numbersymbol hold switch
+  ns (layer-while-held numbersymbol)
+
+  ;; function hold switch
+  fu (layer-while-held function)
+
+  ;; configlayer hold switch
+  cl (layer-while-held configlayer)
+
+  ;; tap for tab, hold for left command/meta 
+  tc (tap-hold $tt $ht tab lmet)
+
+  ;; tap for spacebar, hold for numbersymbol layer 
+  spc (tap-hold $tt $ht spc (layer-while-held numbersymbol))
+
+  ;; holding lsft and switch to layer numbersymbol
+  sftns (multi lsft (layer-while-held numbersymbol))
+
+  ;; holding lsft and switch to layer function
+  sftfu (multi lsft (layer-while-held function))
+
+  ;; macOS fn  
+  mfn (tap-hold 200 200 fn (layer-toggle macfn))
+  
+  ;; macOS function key glyphs
+  mc C-up ;; Mission Control
+  sls M-spc ;; Spotlight Search / Raycast
+  dtn S-C-A-M-f5 ;; Dictation
+  dnd S-C-A-M-f6 ;; Do Not Disturb
+  lp S-C-A-M-l ;; Launchpad
+
+)
+
+(defcfg 
+  process-unmapped-keys yes
+  
+)
