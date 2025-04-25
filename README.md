@@ -1,6 +1,6 @@
 # dotfiles
 
-A place for my dotfiles.
+A place for my dotfiles & scripts.
 
 
 
@@ -37,3 +37,12 @@ Simulate some frequently-used commands from vim.
 ## settings.json
 
 VSCode settings. 
+
+## kanata.kbd & run_kanata.sh
+
+Personal kanata config & launch script for a qmk-like experience on my macbook.
+Config from me, script from Gemini.
+
+## leetcode_redirect.user.js
+
+A Tampermonkey script for showing a button on problem page of leetcode.cn to redirect to leetcode.com. Written by Cursor.
