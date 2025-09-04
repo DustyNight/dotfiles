@@ -25,7 +25,7 @@
   _  _    _    _    _    _    _    _    _    _    _    _    _    _
   grv  1    2    3    4    5    6    7    8    9    0    _    _   _ 
   _    -    =    [     ]     \    lft    down    up    right    ent    _   _ 
-  caps  _    _    _    _    _    ;    '    ,    .    /    rsft
+  caps  _    _    _    f13    _    ;    '    ,    .    /    rsft
   _ _     _      _          _            _     _           _
                                                     _    _    _ 
 )
@@ -105,5 +105,8 @@
 
 (defcfg 
   process-unmapped-keys yes
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
+  )
   
 )
