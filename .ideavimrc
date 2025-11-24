@@ -1,5 +1,8 @@
 " References: https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
 
+" Set up <Space> leader key
+let mapleader = " "
+
 " Set up emulated plugin
 set NERDTree
 set easymotion
@@ -12,9 +15,6 @@ set clipboard+=unnamed,unnamedplus
 
 " Case-insensitive search
 set ignorecase
-
-" Set up <Space> leader key
-let mapleader = " "
 
 " Save
 nmap <leader>w :action SaveAll<cr>
