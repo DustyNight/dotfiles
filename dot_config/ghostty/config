@@ -1,0 +1,37 @@
+# Ghostty Configuration
+
+# Font
+font-family = "MesloLGL Nerd Font Mono"
+font-size = 16
+
+# Theme
+# theme = "Dracula"
+
+# Window
+window-padding-x = 8
+window-padding-y = 8
+window-inherit-working-directory = true
+window-save-state = always
+quit-after-last-window-closed = false
+
+# Shell Integration
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Key Bindings
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+shift+[=previous_tab
+keybind = cmd+shift+]=next_tab
+keybind = cmd+shift+t=reopen_closed_tab
+
+# Copy & Paste
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# Quick Navigation
+keybind = cmd+shift+g=scroll_to_bottom

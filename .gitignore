@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 本地配置（不提交）
+dot_config/zsh/local.zsh
+
+# 临时文件
+*.tmp
+*.bak

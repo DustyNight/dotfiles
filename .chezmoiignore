@@ -1,0 +1,35 @@
+# Chezmoi 忽略列表
+
+# 编辑器
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# 临时文件
+*.tmp
+*.bak
+*.backup
+
+# 日志
+*.log
+
+# 本地配置文件（机器特定）
+dot_config/zsh/local.zsh
+
+# 辅助脚本和示例
+scripts/
+examples/
+
+# 仓库文件
+README.md
+LICENSE
+
+# Git
+.git/
+.gitignore
+
+# License
+LICENSE

@@ -1,0 +1,77 @@
+# ============================================
+# Zsh Main Configuration - Chezmoi Managed
+# Source: {{ .chezmoi.sourceFile }}
+# ============================================
+
+# ----- Basic Options -----
+setopt AUTO_CD              # Jump to directory by typing name
+setopt EXTENDED_GLOB        # Extended glob patterns
+setopt NO_BEEP              # Disable beep
+setopt HIST_IGNORE_DUPS     # Ignore duplicate history
+setopt HIST_IGNORE_SPACE    # Ignore commands starting with space
+setopt SHARE_HISTORY        # Share history between sessions
+
+# ----- History -----
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+# ----- Editor -----
+export EDITOR="{{ .editor | default "nvim" }}"
+
+# ----- Homebrew Path (Auto-detect Architecture) -----
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# ----- Zinit Plugin Manager -----
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
+    source "${ZINIT_HOME}/zinit.zsh"
+fi
+
+# ----- Syntax Highlighting & Autosuggestions (Conditional Load) -----
+[[ -f $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# ----- fzf Integration (Conditional Load) -----
+command -v fzf &>/dev/null && source <(fzf --zsh)
+
+# ----- Modern Tools Initialization (Conditional Load) -----
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+command -v atuin &>/dev/null && eval "$(atuin init zsh)"
+command -v starship &>/dev/null && eval "$(starship init zsh)"
+command -v jenv &>/dev/null && eval "$(jenv init -)"
+
+# ----- Tool Paths (Conditional Add) -----
+add_to_path() { [[ -d "$1" ]] && export PATH="$1:$PATH"; }
+
+add_to_path "$HOME/.volta/bin"
+add_to_path "$HOME/.jenv/bin"
+add_to_path "$HOME/.bun/bin"
+add_to_path "$HOME/.cargo/bin"
+add_to_path "$HOME/.local/bin"
+
+# cmux path
+add_to_path "/Applications/cmux.app/Contents/Resources/bin"
+
+# ----- Aliases -----
+alias l='eza -lah --icons --git 2>/dev/null || ls -lah'
+alias ll='eza -lh --icons --git 2>/dev/null || ls -lh'
+alias lt='eza -T --icons --level=2 2>/dev/null || tree -L 2'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias _='sudo'
+
+# ----- Extra zsh Configs -----
+[[ -f ~/.config/zsh/aliases.zsh ]] && source ~/.config/zsh/aliases.zsh
+[[ -f ~/.config/zsh/tools.zsh ]] && source ~/.config/zsh/tools.zsh
+
+# ----- Local Config (Machine-specific, not committed to git) -----
+[[ -f ~/.config/zsh/local.zsh ]] && source ~/.config/zsh/local.zsh

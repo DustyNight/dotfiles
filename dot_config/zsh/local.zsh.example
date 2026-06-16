@@ -1,0 +1,20 @@
+# ============================================
+# Local Configuration Example - Machine Specific
+# ============================================
+# Copy this file to ~/.config/zsh/local.zsh and edit
+
+# ----- Custom Environment Variables -----
+# export MY_APP_SETTING="value"
+# export API_KEY="your-api-key"
+
+# ----- Custom Tools -----
+# export PATH="${HOME}/.custom-tool/bin:$PATH"
+# source ~/.customrc 2>/dev/null || true
+
+# ----- Proxy Configuration -----
+# export http_proxy="http://127.0.0.1:7890"
+# export https_proxy="http://127.0.0.1:7890"
+
+# ----- Machine-Specific Aliases -----
+# alias work='cd ~/work'
+# alias personal='cd ~/personal'

@@ -1,36 +1,147 @@
-# dotfiles
+# Dotfiles
 
-A place for my dotfiles & scripts.
+Cross-machine configuration managed by [Chezmoi](https://www.chezmoi.io/).
 
-## vimrc
+## Quick Start
 
-A personal vimrc based on [minimal-vimrc](https://github.com/wsdjeg/vim-galore-zh_cn/blob/master/contents/minimal-vimrc.vim) from Wang Shidong@wsdjegm, developed by dustynight@DN-C. Feel free to give advice!
+### New Machine Setup
 
-## zshrc
+```bash
+# 1. Install chezmoi
+brew install chezmoi
 
-Based on [oh my zsh](https://github.com/ohmyzsh/ohmyzsh), you need to install it before using this zshrc. Besides, there are some proxy settings and IM setting in it, which may not be compatible with your system.
+# 2. Clone and apply configuration
+chezmoi init --apply https://github.com/yourusername/dotfiles.git
 
-## gitconfig
+# Or use SSH
+chezmoi init --apply git@github.com:yourusername/dotfiles.git
+```
 
-Just set up the proxy setting for github.
+### Local Development (This Repo)
 
-## ssh config
+```bash
+# Use local source directory
+chezmoi init --source <path-to-this-repo>
+chezmoi apply
+```
 
-Set up the proxy for github.
+## Daily Usage
 
-## ideavimrc
+```bash
+# Edit configuration
+chezmoi edit ~/.zshrc
 
-Simulate some frequently-used commands from vim. 
+# View changes
+chezmoi diff
 
-## settings.json
+# Apply changes
+chezmoi apply
 
-VSCode settings.
+# Add new file to management
+chezmoi add ~/.someconfig
 
-## kanata.kbd & run_kanata.sh
+# Pull and apply latest configuration
+chezmoi update
 
-Personal kanata config & launch script for a qmk-like experience on my macbook.
-Config from me, script from Gemini.
+# View status
+chezmoi status
+```
 
-## leetcode_redirect.user.js
+## Directory Structure
 
-A Tampermonkey script for showing a button on problem page of leetcode.cn to redirect to leetcode.com. Written by Cursor.
+```
+.
+├── dot_zshrc.tmpl              # ~/.zshrc
+├── dot_gitconfig               # ~/.gitconfig
+├── dot_ideavimrc               # ~/.ideavimrc (IntelliJ/Vim)
+├── dot_config/
+│   ├── zsh/
+│   │   ├── aliases.zsh         # Aliases
+│   │   ├── tools.zsh           # Tool configurations
+│   │   └── local.zsh.example   # Local configuration example
+│   ├── starship.toml           # Prompt
+│   ├── ghostty/config          # Ghostty terminal
+│   ├── kanata/kanata.kbd       # Kanata key remapping
+│   └── nvim/                   # LazyVim configuration
+├── scripts/
+│   ├── run_kanata.sh           # Launch kanata
+│   └── leetcode_redirect.user.js
+├── .chezmoiscripts/
+│   ├── run_onchange_before_install-deps.sh  # Install dependencies
+│   ├── run_onchange_after_nvim-setup.sh     # nvim initialization
+│   └── run_onchange_after_notify.sh         # Completion notification
+└── README.md
+```
+
+## Machine-Specific Configuration
+
+Edit `~/.config/zsh/local.zsh` to add machine-specific configurations (not committed to git):
+
+```bash
+# Copy example file
+cp ~/.config/zsh/local.zsh.example ~/.config/zsh/local.zsh
+
+# Edit to add your configurations
+nvim ~/.config/zsh/local.zsh
+```
+
+Example content:
+```bash
+# Custom tools
+export PATH="$HOME/.custom-tool/bin:$PATH"
+source ~/.customrc 2>/dev/null || true
+
+# Proxy
+export http_proxy="http://127.0.0.1:7890"
+export https_proxy="http://127.0.0.1:7890"
+
+# Machine-specific aliases
+alias work='cd ~/work'
+alias personal='cd ~/personal'
+```
+
+## Included Tools
+
+### Shell Environment
+- **zoxide**: Smart directory jumping (`z`)
+- **eza**: Modern `ls` replacement
+- **atuin**: History search
+- **starship**: Minimal prompt
+- **fzf**: Fuzzy search
+- **zinit**: zsh plugin manager
+
+### Editors
+- **nvim**: LazyVim configuration
+- **ideavimrc**: IntelliJ IDEA Vim configuration
+
+### Keyboard
+- **kanata**: Keyboard remapping tool
+
+## Key Bindings
+
+| Key Binding | Function |
+|-------------|----------|
+| `z <dir>` | Smart jump to directory |
+| `l` / `ll` | Enhanced ls |
+| `Ctrl+R` | Atuin history search |
+| `..` / `...` | Quick parent directory |
+
+## Kanata Usage
+
+```bash
+# Launch kanata (from your dotfiles repo)
+<path-to-repo>/scripts/run_kanata.sh
+
+# Configuration file location
+~/.config/kanata/kanata.kbd
+```
+
+## Nvim Initialization
+
+LazyVim plugins will be automatically downloaded on first run:
+
+```bash
+nvim
+# Wait for plugin installation to complete
+# Press q to exit the startup screen
+```

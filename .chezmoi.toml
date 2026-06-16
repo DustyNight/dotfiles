@@ -1,0 +1,17 @@
+[git]
+    autoCommit = false
+    autoPush = false
+
+[edit]
+    command = "nvim"
+
+[diff]
+    command = "delta"
+    pager = "delta"
+
+[merge]
+    command = "nvim"
+
+[data]
+    machine_type = "work"
+    editor = "nvim"

@@ -9,7 +9,7 @@
 # ---- Configuration ----
 # Defines the commands to be executed, making them easy to modify
 KARABINER_DAEMON_CMD="'/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon'"
-KANATA_CMD="/opt/homebrew/bin/kanata -c /Users/clarence/DN_Project/dotfiles/kanata.kbd"
+KANATA_CMD="/opt/homebrew/bin/kanata -c ${HOME}/.config/kanata/kanata.kbd"
 
 # ---- Execution ----
 
