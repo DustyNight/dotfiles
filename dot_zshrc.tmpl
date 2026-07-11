@@ -17,7 +17,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 # ----- Editor -----
-export EDITOR="{{ .editor | default "nvim" }}"
+export EDITOR="{{ default "nvim" (get . "editor") }}"
 
 # ----- Homebrew Path (Auto-detect Architecture) -----
 if [[ -x /opt/homebrew/bin/brew ]]; then
@@ -51,7 +51,11 @@ command -v jenv &>/dev/null && eval "$(jenv init -)"
 # ----- Tool Paths (Conditional Add) -----
 add_to_path() { [[ -d "$1" ]] && export PATH="$1:$PATH"; }
 
-add_to_path "$HOME/.volta/bin"
+# ----- fnm (Node.js version manager) -----
+if command -v fnm >/dev/null 2>&1; then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi
+
 add_to_path "$HOME/.jenv/bin"
 add_to_path "$HOME/.bun/bin"
 add_to_path "$HOME/.cargo/bin"

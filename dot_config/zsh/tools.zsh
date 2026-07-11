@@ -2,11 +2,6 @@
 # Tool Configurations
 # ============================================
 
-# ----- Volta (Node Manager) -----
-if [[ -d "$HOME/.volta" ]]; then
-    export VOLTA_HOME="$HOME/.volta"
-fi
-
 # ----- Bun -----
 if [[ -d "$HOME/.bun" ]]; then
     export BUN_INSTALL="$HOME/.bun"
