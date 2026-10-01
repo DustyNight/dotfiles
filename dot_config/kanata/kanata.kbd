@@ -13,7 +13,7 @@
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  esc  q    w    e    r    t    y    u    i    o    p    bspc    bspc  @cl 
+  @tabfu q    w    e    r    t    y    u    i    o    p    @bspcns bspc  @cl
   @tc a    s    d    f    g    h    j    k    l    ent    ent    ent
   lsft z    x    c    v    b    n    m   XX  XX    rsft    rsft
   @mfn lctl lalt  @sftns          @spc            @fu @sftfu       up
@@ -81,6 +81,12 @@
 
   ;; tap for tab, hold for left command/meta 
   tc (tap-hold $tt $ht tab lmet)
+
+  ;; tap for escape, hold for function layer
+  tabfu (tap-hold $tt $ht esc (layer-while-held function))
+
+  ;; tap for backspace, hold for numbersymbol layer
+  bspcns (tap-hold $tt $ht bspc (layer-while-held numbersymbol))
 
   ;; tap for spacebar, hold for numbersymbol layer 
   spc (tap-hold $tt $ht spc (layer-while-held numbersymbol))
