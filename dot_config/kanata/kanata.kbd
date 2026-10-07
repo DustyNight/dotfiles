@@ -83,10 +83,10 @@
   tc (tap-hold $tt $ht tab lmet)
 
   ;; tap for escape, hold for function layer
-  tabfu (tap-hold $tt $ht esc (layer-while-held function))
+  tabfu (tap-hold 200 $ht esc (layer-while-held function))
 
   ;; tap for backspace, hold for numbersymbol layer
-  bspcns (tap-hold $tt $ht bspc (layer-while-held numbersymbol))
+  bspcns (tap-hold 200 $ht bspc (layer-while-held numbersymbol))
 
   ;; tap for spacebar, hold for numbersymbol layer 
   spc (tap-hold 200 $ht spc (layer-while-held numbersymbol))
