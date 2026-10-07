@@ -89,7 +89,7 @@
   bspcns (tap-hold $tt $ht bspc (layer-while-held numbersymbol))
 
   ;; tap for spacebar, hold for numbersymbol layer 
-  spc (tap-hold $tt $ht spc (layer-while-held numbersymbol))
+  spc (tap-hold 200 $ht spc (layer-while-held numbersymbol))
 
   ;; holding lsft and switch to layer numbersymbol
   sftns (multi lsft (layer-while-held numbersymbol))
